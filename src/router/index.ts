@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Login from "@/views/Login.vue";
 import Home from "@/views/Home.vue";
-import Notfound from "@/views/Notfound.vue";
 import store from "./../store";
 
 const routes: Array<RouteRecordRaw> = [
@@ -21,13 +20,12 @@ const routes: Array<RouteRecordRaw> = [
         next({ name: "Login" });
       }
     }
-  },
+  }
 ];
-
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
+  routes
 });
 
 export default router;

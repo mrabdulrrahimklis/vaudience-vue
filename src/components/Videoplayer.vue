@@ -157,7 +157,7 @@ export default {
       celebrate: false,
       overlay: false,
       home: "",
-      away: "",
+      away: ""
     };
   },
   computed: {},

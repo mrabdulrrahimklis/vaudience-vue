@@ -14,8 +14,8 @@ export default createStore({
     currentUser({ commit }, payload) {
       commit(type.CURRENT_USER, payload);
     },
-    isLogged({commit}, payload) {
-      commit(type.IS_LOGGED, payload)
+    isLogged({ commit }, payload) {
+      commit(type.IS_LOGGED, payload);
     }
   },
   mutations: {
@@ -23,10 +23,10 @@ export default createStore({
       state.darkMode = !state.darkMode;
     },
     currentUser(state, payload) {
-      state.currentUser = payload.payload
+      state.currentUser = payload.payload;
     },
     isLogged(state, payload) {
-      state.isLogged = payload.payload
+      state.isLogged = payload.payload;
     }
   },
   getters: {
