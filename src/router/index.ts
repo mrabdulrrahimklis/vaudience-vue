@@ -21,12 +21,13 @@ const routes: Array<RouteRecordRaw> = [
         next({ name: "Login" });
       }
     }
-  }
+  },
 ];
+
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
 });
 
 export default router;

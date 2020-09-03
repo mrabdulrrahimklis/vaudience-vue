@@ -23,11 +23,9 @@ export default createStore({
       state.darkMode = !state.darkMode;
     },
     currentUser(state, payload) {
-      console.log(payload)
       state.currentUser = payload.payload
     },
     isLogged(state, payload) {
-      console.log(payload)
       state.isLogged = payload.payload
     }
   },

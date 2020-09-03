@@ -149,7 +149,6 @@
 <script>
 import store from "./../store";
 import type from "@/store/types";
-import Axios from "axios";
 
 export default {
   data() {
@@ -157,12 +156,8 @@ export default {
       hideShow: false,
       celebrate: false,
       overlay: false,
-      possesion: "",
-      posts: "",
-      errors: [],
       home: "",
       away: "",
-      data: []
     };
   },
   computed: {},
@@ -173,6 +168,7 @@ export default {
     this.getUserRepositories;
     const overlay = document.getElementById("overlay");
     const video = document.getElementById("video");
+
     video.addEventListener(
       "progress",
       function() {
