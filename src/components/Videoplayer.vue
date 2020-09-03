@@ -149,6 +149,7 @@
 <script>
 import store from "./../store";
 import type from "@/store/types";
+import axios from 'axios';
 
 export default {
   data() {
@@ -157,10 +158,12 @@ export default {
       celebrate: false,
       overlay: false,
       home: "",
-      away: ""
+      away: "",
+      data: [],
+      interval: null,
+      loadingState: '',
     };
   },
-  computed: {},
   watch: {
     hideShow: "getUserRepositories"
   },
@@ -173,10 +176,13 @@ export default {
       "progress",
       function() {
         const show = video.currentTime >= 5 && video.currentTime < 10;
-        overlay.style.visibility = show ? "visible" : "visible";
+        overlay.style.visibility = show ? "hidden" : "visible";
       },
       false
     );
+
+    this.interval = setInterval(this.fetchAllCharacters, 60000);
+    this.fetchAllCharacters();
   },
   methods: {
     getUserRepositories() {
@@ -205,6 +211,15 @@ export default {
       store.dispatch({
         type: type.CURRENT_USER,
         payload: "Stranger"
+      });
+    },
+    fetchAllCharacters() {
+      this.loadingState = "loading";
+      axios.get("https://cyrap.com/football_data.json").then(response => {
+        setTimeout(() => {
+          this.loadingState = "success";
+          this.data = response.data;
+        }, 1000);
       });
     }
   }
