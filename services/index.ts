@@ -6,7 +6,7 @@ const request = async (typeOfRequest: string) => {
 
   if (typeOfRequest === "GET") {
     try {
-      response = await axios
+      await axios
         .get(url, {
           headers: {
             "Access-Control-Allow-Origin": "*",
