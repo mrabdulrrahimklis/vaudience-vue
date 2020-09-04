@@ -23,9 +23,12 @@
 </template>
 
 <script lang="ts">
+import { Options, Vue } from "vue-class-component";
 import { mapState } from "vuex";
 
-export default {
+@Options({
   computed: mapState(["darkMode", "isLogged", "currentUser"])
-};
+})
+
+export default class Header extends Vue {};
 </script>

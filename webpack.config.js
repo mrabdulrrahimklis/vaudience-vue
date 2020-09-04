@@ -1,4 +1,9 @@
 module.exports = {
+  configureWebpack: {
+    devServer: {
+      headers: { "Access-Control-Allow-Origin": "*" }
+    }
+  },
   module: {
     loaders: [
       {
@@ -14,6 +19,6 @@ module.exports = {
   vue: {
     loaders: {
       scss: "style!css!sass"
-    }
-  }
+    },
+  },
 };

@@ -11,8 +11,8 @@
           />
         </label>
         <span class="error-message" v-if="this.credentials"
-          >Wrong Credentials</span
-        >
+          >Wrong Credentials!
+        </span>
       </div>
       <div class="login-button-style">
         <button id="login" @click="this.login">Login</button>
@@ -30,7 +30,7 @@ import type from "@/store/types";
   data() {
     return {
       usernameModel: "",
-      credentials: false,
+      credentials: false
     };
   },
   props: {
@@ -38,7 +38,7 @@ import type from "@/store/types";
   },
   methods: {
     login() {
-      if (this.usernameModel == "Toni") {
+      if (this.usernameModel != "") {
         this.$router.push("/home");
         store.dispatch({
           type: type.IS_LOGGED,

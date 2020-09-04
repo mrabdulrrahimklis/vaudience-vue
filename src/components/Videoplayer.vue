@@ -1,5 +1,5 @@
 <template>
-  <div v-if="this.hideShow" class="width-200">
+  <div v-if="this.hideShow" class="width-200 move-top-posesion">
     <span class="home">66%</span>
     <span class="ball-possession">BALL POSSESSION %</span>
     <span class="away">34%</span>
@@ -147,11 +147,12 @@
 </template>
 
 <script>
+import { Options, Vue } from "vue-class-component";
 import store from "./../store";
 import type from "@/store/types";
-import axios from 'axios';
+import request from "../../services";
 
-export default {
+@Options({
   data() {
     return {
       hideShow: false,
@@ -161,13 +162,13 @@ export default {
       away: "",
       data: [],
       interval: null,
-      loadingState: '',
+      loadingState: ""
     };
   },
   watch: {
     hideShow: "getUserRepositories"
   },
-  mounted() {
+  async mounted() {
     this.getUserRepositories;
     const overlay = document.getElementById("overlay");
     const video = document.getElementById("video");
@@ -176,17 +177,16 @@ export default {
       "progress",
       function() {
         const show = video.currentTime >= 5 && video.currentTime < 10;
-        overlay.style.visibility = show ? "hidden" : "visible";
       },
       false
     );
 
-    this.interval = setInterval(this.fetchAllCharacters, 60000);
-    this.fetchAllCharacters();
+    this.interval = setTimeout(this.fetchAllCharacters, 60000);
+    this.data = await request("GET");
   },
   methods: {
     getUserRepositories() {
-      setInterval(
+      setTimeout(
         function() {
           this.overlay = false;
         }.bind(this),
@@ -195,7 +195,7 @@ export default {
     },
     confetti() {
       this.celebrate = true;
-      setInterval(
+      setTimeout(
         function() {
           this.celebrate = false;
         }.bind(this),
@@ -212,16 +212,8 @@ export default {
         type: type.CURRENT_USER,
         payload: "Stranger"
       });
-    },
-    fetchAllCharacters() {
-      this.loadingState = "loading";
-      axios.get("https://cyrap.com/football_data.json").then(response => {
-        setTimeout(() => {
-          this.loadingState = "success";
-          this.data = response.data;
-        }, 1000);
-      });
     }
   }
-};
+})
+export default class Videoplayer extends Vue {}
 </script>

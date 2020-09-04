@@ -17,8 +17,9 @@
 <script lang="ts">
 import store from "@/store";
 import type from "@/store/types";
+import { Options, Vue } from "vue-class-component";
 
-export default {
+@Options({
   data() {
     return {
       darkMode: store.getters.getterThemeState
@@ -46,5 +47,7 @@ export default {
       }
     }
   }
-};
+})
+
+export default class Footer extends Vue {};
 </script>
