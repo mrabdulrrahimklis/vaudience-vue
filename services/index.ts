@@ -9,19 +9,37 @@ const request = async (typeOfRequest: string, object = {}) => {
 
   if (typeOfRequest === "GET") {
     try {
-      // for some reason here I have problem with CORS maybe on this route is not
-      // supported but I use some other request to show you that I know to use this
-      // if this is ok for you
-      //
-      // response = await fetch(url)
-      //     .then(response => response.text())
-      //     .then(contents => console.log(contents))
+        // for some reason here I have problem with CORS maybe on this route is not
+        // supported but I use some other request to show you that I know to use this
+        // if this is ok for you
+        //
+        //await axios
+        //         .get(url, {
+        //           headers: {
+        //             "Access-Control-Allow-Origin": "*",
+        //             "Content-Type" : "application/x-www-form-urlencoded",
+        //             "Access-Control-Allow-Methods": "GET"
+        //           },
+        //           proxy: {
+        //             host: '104.236.174.88',
+        //             port: 3128
+        //           }
+        //         })
+        //         .then(resp => {
+        //           console.log(resp)
+        //           response = resp;
+        //         });
+        // response = await fetch(url)
+        //     .then(response => response.text())
+        //     .then(contents => console.log(contents))
 
-      await axios
-          .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-          .then(resp => (response = resp))
+        await axios
+            .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+            .then(resp => (response = resp))
 
-      return response
+        return response
+
+        return response;
     } catch (e) {
       console.log("GET Error:", e);
     }
