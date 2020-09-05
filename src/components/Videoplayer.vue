@@ -150,7 +150,7 @@
 import { Options, Vue } from "vue-class-component";
 import store from "./../store";
 import type from "@/store/types";
-import request from "../../services";
+import request from "../services";
 
 @Options({
   data() {
